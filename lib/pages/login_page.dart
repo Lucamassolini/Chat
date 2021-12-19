@@ -9,7 +9,7 @@ import '../widgets/widgets.dart';
 import 'pages.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   LoginPageState createState() => LoginPageState();
@@ -34,7 +34,7 @@ class LoginPageState extends State<LoginPage> {
     }
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             AppConstants.loginTitle,
             style: TextStyle(color: ColorConstants.primaryColor),
           ),
@@ -50,26 +50,27 @@ class LoginPageState extends State<LoginPage> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomePage(),
+                        builder: (context) => const HomePage(),
                       ),
                     );
                   }
                 },
-                child: Text(
+                child: const Text(
                   'Sign in with Google',
                   style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed))
-                        return Color(0xffdd4b39).withOpacity(0.8);
-                      return Color(0xffdd4b39);
+                      if (states.contains(MaterialState.pressed)) {
+                        return const Color(0xffdd4b39).withOpacity(0.8);
+                      }
+                      return const Color(0xffdd4b39);
                     },
                   ),
                   splashFactory: NoSplash.splashFactory,
                   padding: MaterialStateProperty.all<EdgeInsets>(
-                    EdgeInsets.fromLTRB(30, 15, 30, 15),
+                    const EdgeInsets.fromLTRB(30, 15, 30, 15),
                   ),
                 ),
               ),
@@ -77,8 +78,8 @@ class LoginPageState extends State<LoginPage> {
             // Loading
             Positioned(
               child: authProvider.status == Status.authenticating
-                  ? LoadingView()
-                  : SizedBox.shrink(),
+                  ? const LoadingView()
+                  : const SizedBox.shrink(),
             ),
           ],
         ));

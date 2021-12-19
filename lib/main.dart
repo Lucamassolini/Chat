@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   final FirebaseStorage firebaseStorage = FirebaseStorage.instance;
 
-  MyApp({required this.prefs});
+  MyApp({Key? key, required this.prefs}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +37,8 @@ class MyApp extends StatelessWidget {
           create: (_) => AuthProvider(
             firebaseAuth: FirebaseAuth.instance,
             googleSignIn: GoogleSignIn(),
-            prefs: this.prefs,
-            firebaseFirestore: this.firebaseFirestore,
+            prefs: prefs,
+            firebaseFirestore: firebaseFirestore,
           ),
         ),
         Provider<SettingProvider>(
@@ -50,14 +50,14 @@ class MyApp extends StatelessWidget {
         ),
         Provider<HomeProvider>(
           create: (_) => HomeProvider(
-            firebaseFirestore: this.firebaseFirestore,
+            firebaseFirestore: firebaseFirestore,
           ),
         ),
         Provider<ChatProvider>(
           create: (_) => ChatProvider(
-            prefs: this.prefs,
-            firebaseFirestore: this.firebaseFirestore,
-            firebaseStorage: this.firebaseStorage,
+            prefs: prefs,
+            firebaseFirestore: firebaseFirestore,
+            firebaseStorage: firebaseStorage,
           ),
         ),
       ],

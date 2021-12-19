@@ -185,16 +185,16 @@ class ChatPageState extends State<ChatPage> {
             messageChat.type == TypeMessage.text
                 // Text
                 ?  Expanded(child: Container(
-                    padding: EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
+                    padding: const EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
                     child: Align(
                       alignment: (Alignment.topRight),
                       child:Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: (Color(0xFFff8906)),
+                          color: (const Color(0xFFff8906)),
                         ),
-                        padding: EdgeInsets.all(16),
-                        child:Text(messageChat.content, style: TextStyle(fontSize: 15),),
+                        padding: const EdgeInsets.all(16),
+                        child:Text(messageChat.content, style: const TextStyle(fontSize: 15),),
                       ),
                     ))
 
@@ -349,7 +349,7 @@ class ChatPageState extends State<ChatPage> {
                       : Container(width: 35),
                   messageChat.type == TypeMessage.text
                       ?  Expanded(child: Container(
-                        padding: EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
+                        padding: const EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
                         child: Align(
                           alignment: (Alignment.topLeft),
                           child:Container(
@@ -357,8 +357,8 @@ class ChatPageState extends State<ChatPage> {
                               borderRadius: BorderRadius.circular(20),
                               color: (Colors.grey.shade200),
                             ),
-                            padding: EdgeInsets.all(16),
-                            child:Text(messageChat.content, style: TextStyle(fontSize: 15),),
+                            padding: const EdgeInsets.all(16),
+                            child:Text(messageChat.content, style: const TextStyle(fontSize: 15),),
                           ),
                         ))
                         /*
@@ -533,19 +533,19 @@ class ChatPageState extends State<ChatPage> {
       appBar:  AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFf25f4c),
+        backgroundColor: const Color(0xFFf25f4c),
         flexibleSpace: SafeArea(
           child: Container(
-            padding: EdgeInsets.only(right: 16),
+            padding: const EdgeInsets.only(right: 16),
             child: Row(
               children: <Widget>[
                 IconButton(
                   onPressed: (){
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back,color: Colors.black,),
+                  icon: const Icon(Icons.arrow_back,color: Colors.black,),
                 ),
-                SizedBox(width: 2,),
+                const SizedBox(width: 2,),
                 CircleAvatar(
                           child: ClipOval(
                         child: Image.network(
@@ -582,19 +582,19 @@ class ChatPageState extends State<ChatPage> {
                           },
                         ),
                       )),
-                SizedBox(width: 12,),
+                const SizedBox(width: 12,),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(peerNickname,style: TextStyle( fontSize: 16 ,fontWeight: FontWeight.w600),),
-                      SizedBox(height: 6,),
+                      Text(peerNickname,style: const TextStyle( fontSize: 16 ,fontWeight: FontWeight.w600),),
+                      const SizedBox(height: 6,),
                       //Text("Online",style: TextStyle(color: Colors.grey.shade600, fontSize: 13),),
                     ],
                   ),
                 ),
-                Icon(Icons.settings,color: Colors.black54,),
+                const Icon(Icons.settings,color: Colors.black54,),
               ],
             ),
           ),
@@ -603,7 +603,7 @@ class ChatPageState extends State<ChatPage> {
       body: WillPopScope(
         
         child: Container(
-          decoration: BoxDecoration(color: Color(0xFF0f0e17)),
+          decoration: const BoxDecoration(color: Color(0xFF0f0e17)),
           child: Stack(
             
             children: <Widget>[

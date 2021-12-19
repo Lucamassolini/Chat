@@ -35,6 +35,11 @@ class AuthProvider extends ChangeNotifier {
     return prefs.getString(FirestoreConstants.id);
   }
 
+  String? getUserFirebaseNickname() {
+    return prefs.getString(FirestoreConstants.nickname);
+  }
+
+
   Future<bool> isLoggedIn() async {
     bool isLoggedIn = await googleSignIn.isSignedIn();
     if (isLoggedIn && prefs.getString(FirestoreConstants.id)?.isNotEmpty == true) {
@@ -64,7 +69,7 @@ class AuthProvider extends ChangeNotifier {
             .where(FirestoreConstants.id, isEqualTo: firebaseUser.uid)
             .get();
         final List<DocumentSnapshot> documents = result.docs;
-        if (documents.length == 0) {
+        if (documents.isEmpty) {
           // Writing data to server because here is a new user
           firebaseFirestore.collection(FirestoreConstants.pathUserCollection).doc(firebaseUser.uid).set({
             FirestoreConstants.nickname: firebaseUser.displayName,
