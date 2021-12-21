@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:chat/models/group_chat.dart';
 import 'package:chat/pages/add_members.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -551,6 +552,75 @@ class HomePageState extends State<HomePage> {
                                   color: Colors.grey.shade600,
                                 ),
                               ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  )),
+                ],
+              ),
+            ),
+          ),
+          margin: const EdgeInsets.only(bottom: 10, left: 5, right: 5),
+        );
+      }
+    } else {
+      return const SizedBox.shrink();
+    }
+  }
+
+
+  Widget buildGroup(BuildContext context, DocumentSnapshot? document) {
+    if (document != null) {
+      GroupChat groupChat = GroupChat.fromDocument(document);
+      if (groupChat.id == currentUserId) {
+        return const SizedBox.shrink();
+      } else {
+        return Container(
+          child: GestureDetector(
+            onTap: () {
+              if (Utilities.isKeyboardShowing()) {
+                Utilities.closeKeyboard(context);
+              }
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatPage(
+                    peerId: userChat.id,
+                    peerAvatar: userChat.photoUrl,
+                    peerNickname: userChat.nickname,
+                  ),
+                ),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, top: 10, bottom: 10),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                      child: Row(
+                    children: [
+                      
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Expanded(
+                        child: Container(
+                          color: Colors.transparent,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Nickname: ${groupChat.nickname}',
+                                style: const TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                              ),
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              
                             ],
                           ),
                         ),
